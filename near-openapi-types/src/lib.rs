@@ -20846,6 +20846,10 @@ impl ::std::convert::From<()> for RpcClientConfigRequest {
 #[doc = "        }"]
 #[doc = "      ]"]
 #[doc = "    },"]
+#[doc = "    \"disable_tx_routing\": {"]
+#[doc = "      \"description\": \"If true, the node won't forward transactions to next the chunk producers.\","]
+#[doc = "      \"type\": \"boolean\""]
+#[doc = "    },"]
 #[doc = "    \"doomslug_step_period\": {"]
 #[doc = "      \"description\": \"Time between running doomslug timer.\","]
 #[doc = "      \"type\": \"array\","]
@@ -21290,6 +21294,9 @@ pub struct RpcClientConfigResponse {
     #[doc = "Configuration for a cloud-based archival writer. If this config is present, the writer is enabled and\nwrites chunk-related data based on the tracked shards."]
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub cloud_archival_writer: ::std::option::Option<CloudArchivalWriterConfig>,
+    #[doc = "If true, the node won't forward transactions to next the chunk producers."]
+    #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+    pub disable_tx_routing: ::std::option::Option<bool>,
     #[doc = "Time between running doomslug timer."]
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub doomslug_step_period: ::std::option::Option<[u64; 2usize]>,
@@ -21472,6 +21479,7 @@ impl ::std::default::Default for RpcClientConfigResponse {
             chunk_wait_mult: Default::default(),
             client_background_migration_threads: Default::default(),
             cloud_archival_writer: Default::default(),
+            disable_tx_routing: Default::default(),
             doomslug_step_period: Default::default(),
             dynamic_resharding_dry_run: Default::default(),
             enable_early_prepare_transactions: Default::default(),
